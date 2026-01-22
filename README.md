@@ -28,7 +28,7 @@ Users should be able to:
 
 ### Screenshot
 
-![NFT Preview Card Component](./screenshot.png)
+![NFT Preview Card Component](./assets/images/screenshot.png)
 
 ### Links
 
