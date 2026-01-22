@@ -1,0 +1,361 @@
+/* ===================================
+   CSS RESET
+   =================================== */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Remove default margin and padding */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* Prevent font size inflation */
+html {
+	-moz-text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none;
+}
+
+/* Remove default list styles */
+ul,
+ol {
+	list-style: none;
+}
+
+/* Set core body defaults */
+body {
+	min-block-size: 100vh;
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Set shorter line heights on headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: 1.1;
+	font-weight: inherit;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+	text-wrap: balance;
+}
+
+/* Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-inline-size: 100%;
+	block-size: auto;
+}
+
+/* Remove built-in form typography styles */
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+/* Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+
+/* Remove button styles */
+button {
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+/* Remove link underline */
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+/* ===================================
+   CSS CUSTOM PROPERTIES (VARIABLES)
+   =================================== */
+
+:root {
+	/* Colors - Primary */
+	--color-blue-500: hsl(215, 51%, 70%);
+	--color-cyan-400: hsl(178, 100%, 50%);
+
+	/* Colors - Neutral */
+	--color-blue-950: hsl(217, 54%, 11%);
+	--color-blue-900: hsl(216, 50%, 16%);
+	--color-blue-800: hsl(215, 32%, 27%);
+	--color-white: hsl(0, 0%, 100%);
+
+	/* Typography - Font Family */
+	--font-family-primary: "Outfit", system-ui, -apple-system, sans-serif;
+
+	/* Typography - Font Weights */
+	--font-weight-light: 300;
+	--font-weight-regular: 400;
+	--font-weight-semibold: 600;
+
+	/* Typography - Font Sizes Base (Mobile First - 16px base) */
+	--font-size-base: 1rem; /* 16px */
+	--font-size-body: 1.125rem; /* 18px */
+	--font-size-heading: 1.375rem; /* 22px */
+	--font-size-small: 1rem; /* 16px */
+	--font-size-attribution: 0.6875rem; /* 11px */
+
+	/* Typography - Line Heights */
+	--line-height-heading: 1.25; /* 125% */
+	--line-height-body: 1.45; /* 145% */
+
+	/* Spacing Scale - Mobile First (usando rem) */
+	--spacing-0: 0;
+	--spacing-100: 0.5rem; /* 8px */
+	--spacing-200: 1rem; /* 16px */
+	--spacing-300: 1.5rem; /* 24px */
+	--spacing-400: 2rem; /* 32px */
+
+	/* Border Radius */
+	--radius-small: 0.5rem; /* 8px */
+	--radius-medium: 0.9375rem; /* 15px */
+
+	/* Transitions */
+	--transition-fast: 200ms ease-in-out;
+	--transition-normal: 300ms ease-in-out;
+
+	/* Shadows */
+	--shadow-card: 0 1.5rem 3rem rgba(0, 0, 0, 0.3);
+
+	/* Layout - Mobile First */
+	--card-max-width: 20.4375rem; /* 327px - mobile */
+	--card-padding: 1.5rem; /* 24px */
+}
+
+/* ===================================
+   BASE STYLES - MOBILE FIRST
+   =================================== */
+
+body {
+	font-family: var(--font-family-primary);
+	font-size: var(--font-size-body);
+	font-weight: var(--font-weight-light);
+	line-height: var(--line-height-body);
+	color: var(--color-white);
+	background-color: var(--color-blue-950);
+	display: grid;
+	place-items: center;
+	min-block-size: 100vh;
+	padding-inline: var(--spacing-300);
+	padding-block: var(--spacing-300);
+}
+
+/* ===================================
+                MAIN LAYOUT
+   =================================== */
+
+.main {
+	inline-size: 100%;
+	max-inline-size: var(--card-max-width);
+}
+
+.nft-card {
+	background-color: var(--color-blue-950);
+	border-radius: var(--radius-medium);
+	padding: var(--card-padding);
+	box-shadow: var(--shadow-card);
+}
+
+.nft-card__image-container {
+	position: relative;
+	border-radius: var(--radius-small);
+	overflow: hidden;
+	margin-block-end: var(--spacing-300);
+	cursor: pointer;
+}
+
+.nft-card__image {
+	inline-size: 100%;
+	block-size: auto;
+	aspect-ratio: 1 / 1;
+	object-fit: cover;
+	display: block;
+}
+
+.nft-card__overlay {
+	position: absolute;
+	inset: 0;
+	background-color: hsl(178, 100%, 50%, 0.5);
+	display: grid;
+	place-items: center;
+	opacity: 0;
+	transition: opacity var(--transition-normal);
+}
+
+.nft-card__image-container:hover .nft-card__overlay,
+.nft-card__image-container:focus-within .nft-card__overlay {
+	opacity: 1;
+}
+
+.ft-card__icon-view {
+	inline-size: 3rem;
+	block-size: 3rem;
+}
+
+.nft-card__content {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-200);
+}
+
+.nft-card__title {
+	font: var(--font-size-heading);
+	font-weight: var(--font-weight-semibold);
+	line-height: var(--line-height-heading);
+	margin-block-end: var(--spacing-100);
+}
+
+.nft-card__title-link {
+	color: var(--color-white);
+	transition: color var(--transition-fast);
+}
+
+.nft-card__title-link:hover,
+.nft-card__title-link:focus-visible {
+	color: var(--color-cyan-400);
+}
+
+.nft-card__description {
+	font-size: var(--font-size-body);
+	font-weight: var(--font-weight-light);
+	line-height: var(--line-height-body);
+	color: var(--color-blue-500);
+	margin-block-end: var(--spacing-100);
+}
+
+.nft-card__details {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-block-end: var(--spacing-200);
+	border-block-end: 1px solid var(--color-blue-800);
+}
+
+.nft-card__price,
+.nft-card__time-left {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-100);
+	font: var(--font-size-small);
+	font-weight: var(--font-weight-semibold);
+	line-height: var(--line-height-heading);
+}
+
+.nft-card__price {
+	color: var(--color-cyan-400);
+}
+
+.nft-card__time-left {
+	color: var(--color-blue-500);
+}
+
+.nft-card__icon {
+	inline-size: 0.7rem;
+	block-size: auto;
+}
+
+.nft-card__icon--ethereum {
+	inline-size: 0.7rem;
+}
+
+.nft-card__icon--clock {
+	inline-size: 1.2rem;
+	block-size: 1.2rem;
+}
+
+.nft-card__creator {
+	display: flex;
+	align-items: center;
+	gap: var(--spacing-200);
+	padding-block-start: var(--spacing-100);
+}
+
+.nft-card__creator-text {
+	font-size: var(--font-size-small);
+	font-weight: var(--font-weight-regular);
+	color: var(--color-blue-500);
+}
+
+.nft-card__creator-link {
+	color: var(--color-white);
+	transition: color var(--transition-fast);
+	margin-inline-start: 0.25rem;
+}
+
+.nft-card__creator-link:hover,
+.nft-card__creator-link:focus-visible {
+	color: var(--color-cyan-400);
+	outline: none;
+}
+
+.attribution {
+	font-size: var(--font-size-attribution);
+	text-align: center;
+	color: var(--color-blue-500);
+	margin-block-start: var(--spacing-300);
+}
+
+.attribution__link {
+	color: var(--color-cyan-400);
+	transition: color var(--transition-fast);
+}
+
+.attribution__link:hover,
+.attribution__link:focus-visible {
+	color: var(--color-white);
+	text-decoration: underline;
+	outline: none;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN - MOBILE FIRST
+   =================================== */
+
+@media (min-width: 23.4375rem) {
+	:root {
+		--card-max-width: 22rem;
+	}
+}
+
+@media (min-width: 90rem) {
+	body {
+		padding-block: var(--spacing-400);
+	}
+
+	:root {
+		--card-max-width: 22.5rem;
+	}
+}
