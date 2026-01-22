@@ -183,7 +183,7 @@ body {
 }
 
 .nft-card {
-	background-color: var(--color-blue-950);
+	background-color: var(--color-blue-900);
 	border-radius: var(--radius-medium);
 	padding: var(--card-padding);
 	box-shadow: var(--shadow-card);

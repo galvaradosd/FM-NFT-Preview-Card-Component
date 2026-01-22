@@ -6,6 +6,7 @@ This is a solution to the [NFT preview card component challenge on Frontend Ment
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
@@ -24,6 +25,10 @@ Users should be able to:
 - See hover states for interactive elements
 - Experience smooth transitions on hover effects
 - Navigate using keyboard (accessibility)
+
+### Screenshot
+
+![NFT Preview Card Component](./screenshot.png)
 
 ### Links
 
