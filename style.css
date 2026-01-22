@@ -303,7 +303,15 @@ body {
 	padding-block-start: var(--spacing-100);
 }
 
+.nft-card__avatar {
+	inline-size: 2.1rem;
+	block-size: 2.1rem;
+	border-radius: 50%;
+	border: 1.5px solid var(--color-white);
+}
+
 .nft-card__creator-text {
+	display: flex;
 	font-size: var(--font-size-small);
 	font-weight: var(--font-weight-regular);
 	color: var(--color-blue-500);
@@ -341,7 +349,7 @@ body {
 }
 
 /* ===================================
-   RESPONSIVE DESIGN - MOBILE FIRST
+   RESPONSIVE DESIGN
    =================================== */
 
 @media (min-width: 23.4375rem) {
